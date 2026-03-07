@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'am';
+  src: url('/font/HFMassisShantNUnicode.ttf');
+}
+
+*{
+  font-family: 'am'
+}
