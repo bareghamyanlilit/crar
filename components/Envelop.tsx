@@ -1,38 +1,54 @@
 "use client";
 import { useState } from "react";
 
-export function Envelop() {
+export function Envelop({ openEnvelope, setOpenEnvelope }: any) {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="bg-black w-screen h-screen overflow-hidden flex py-50 ">
-      <div className=" m-auto relative w-150 h-50">
-        <div className="TopBlack absolute z-5 -top-100  w-400 h-100 bg-[#000000]"></div>
-        <div className="BottomBlack absolute z-10 top-100 -right-50  w-400 h-100 bg-[#000000]"></div>
-        <div className="LeftBlack absolute z-10 -left-100 -top-50  w-100 h-300 bg-[#000000]"></div>
-        <div className="RightBlack absolute z-10 -right-100 -top-50  w-100 h-300 bg-[#000000]"></div>
+    <div
+      className={`${openEnvelope ? "hidden" : ""} bg-[#2f1d00] w-screen h-screen overflow-hidden flex py-50 `}
+    >
+      <div className=" m-auto mt-10 relative w-75 h-25 md:w-150 md:h-50">
+        <div className="TopBlack absolute z-5 md:-top-100 md:w-400 md:h-100 -top-50 w-200 h-50 bg-[#2f1d00]"></div>
+        <div className="BottomBlack absolute z-10 md:top-100 md:-right-50 md:w-400 md:h-100 top-50 -right-25 w-200 h-50 bg-[#2f1d00]"></div>
+        <div className="LeftBlack absolute z-10 md:-left-100 md:-top-50 md:w-100 md:h-300 -left-50 -top-25 w-50 h-150 bg-[#2f1d00]"></div>
+        <div className="RightBlack absolute z-10 md:-right-100 md:-top-50 md:w-100 md:h-300 -right-50 -top-25 w-50 h-150 bg-[#2f1d00]"></div>
 
-        <div className=" absolute z-0 top-0 w-150 h-100 bg-[#ffffff]"></div>
-
-        <div
-          className={` absolute ${open ? "z-6" : "z-1"} top-5 w-140 h-90 left-5 bg-[#ffffff]`}
-        ></div>
-        <div
-          className={`absolute ${open ? "z-5" : "z-1"} -top-54 left-22 bg-[#ffedb8] w-106 h-106 rotate-45`}
-        ></div>
+        {/* <div className=" absolute z-0 md:top-0 md:w-150 md:h-100  top-0 w-75 h-50 bg-[#ffffff]"></div> */}
 
         <div
-          className={`RightGreen  ${open ? "z-6" : "z-1"} absolute z-2 top-16 left-85 bg-[#ffe596] w-106 h-140 rotate-45`}
+          style={{ backgroundImage: 'url("/first.png")' }}
+          className={`rounded-xs absolute ${open ? " animate-bounceY z-50 w-70 h-45 " : ""} bg-cover bg-center grid content-center gap-3 md:top-5 md:w-140 md:h-90 md:left-5 top-2.5 left-2.5   bg-[#ffffff] text-black text-center text-base`}
+        >
+          <p className="FontArmDecorativeU">
+            Դուք հրավիրված եք <br /> Խաչէի և Աննայի <br /> հարսանիքին{" "}
+          </p>
+          <button
+            onClick={() => setOpenEnvelope(true)}
+            className="FontArmDecorativeU bg-[#d2c5aa] py-1 px-2 rounded-xs w-max m-auto"
+          >
+            Բացել
+          </button>
+        </div>
+
+        <div
+          className={`absolute ${open ? "z-5" : "z-1"} transition-all duration-100 md:-top-54 md:left-22 md:w-106 md:h-106 -top-27 left-11 w-53 h-53 rotate-45`}
+          style={{ background: "linear-gradient(125deg, white, #baa26f)" }}
         ></div>
         <div
-          className={`LeftGreen  ${open ? "z-6" : "z-1"} absolute z-2 top-16 right-85 bg-[#ffe596] w-140 h-106 rotate-45`}
+          className={`RightGreen  ${open ? "z-6" : "z-1"} absolute z-2 md:top-16 md:left-85 md:w-106 md:h-140 top-8 left-42.5 w-53 h-70 rotate-45`}
+          style={{ background: "linear-gradient(-90deg, white, #baa26f)" }}
+        ></div>
+        <div
+          className={`LeftGreen  ${open ? "z-6" : "z-1"} absolute z-2 md:top-11 md:right-90 md:w-140 md:h-106 top-5.5 right-45 w-70 h-53  rotate-45`}
+          style={{ background: "linear-gradient(90deg, white, #baa26f)" }}
         ></div>
 
         <img
           src="/forenvelope.png"
           alt="envelop"
           onClick={() => setOpen(!open)}
-          className="absolute cursor-pointer top-50 left-60 z-20 w-30 h-30 "
+          className={` ${open ? "opacity-0" : "opacity-100"} transition-all duration-100  absolute cursor-pointer md:top-50 md:left-60 md:w-30 md:h-30 top-25 left-30 z-20 w-15 h-15 `}
         />
       </div>
     </div>
